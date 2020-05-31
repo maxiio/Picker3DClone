@@ -12,43 +12,58 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> helpers;
 
     [SerializeField] private Transform endpointTransform;
-    public Vector2 direction;
     private float editorSpeed = 100.0f;
-    private float speed = 5.0f;
+    private float speedX = 2.0f;
+    private float speedZ = 8.0f;
     private Rigidbody rb;
-    private float velocityX;
+    private float direction;
+    private Vector3 delta;
+    private bool clickStarted = false;
     
 
-    public Vector2 lastPos;
+    public Vector3 lastPos;
     
     private void FixedUpdate()
     {
-        
-        if (Input.GetMouseButton(0))
+        if ( Input.GetMouseButtonDown(0) )
         {
-            float h= Input.GetAxis("Mouse X");
-            float v = Input.GetAxis("Mouse Y");
+            lastPos = Input.mousePosition;
+            clickStarted = true;
+        }
+        else if ( Input.GetMouseButton(0) )
+        {
+            if (clickStarted)
+            {
+                delta = Input.mousePosition - lastPos;
+            }
 
-            Vector3 movement = new Vector3(h, 0 , 0);
-            rb.AddForce(movement * 500);
-            if (h<0)
+            if (Mathf.Abs(delta.x) > 2f)
             {
-                velocityX = -1f;
+                float h= Input.GetAxis("Mouse X");
+
+                if (h<0)
+                {
+                    direction = -1f;
+                }
+                else
+                {
+                    direction = 1f;
+                }
             }
-            else
-            {
-                velocityX = 1f;
-            }
+            
+            Debug.Log( "delta X : " + delta.x );
+
+            lastPos = Input.mousePosition;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            velocityX = 0;
+            clickStarted = false;
+            direction = 0;
         }
-
-
-        rb.velocity = new Vector3(velocityX * 3, 0, 1.0f * 10) ;
         
+        rb.velocity = new Vector3(direction * speedX, 0, 1.0f * speedZ) ;
+
     }
     private void MakeInstance()
     {
@@ -67,7 +82,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-       // transform.DOMoveZ(endpointTransform.position.z, 15f).SetEase(Ease.Linear);
         SetHelpersActive(true);
     }
 
