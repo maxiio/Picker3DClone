@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
     public List<GameObject> helpers;
+    private Rigidbody rb;
+    private Vector3 inputVector;
 
     private void MakeInstance()
     {
@@ -23,12 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         SetHelpersActive(true);
-    }
-    
-    private void Update()
-    {
-        
     }
 
     private void SetHelpersActive(bool isActive)
@@ -37,5 +35,11 @@ public class PlayerController : MonoBehaviour
         {
             helper.SetActive(isActive);
         }
+    }
+
+    private void Update()
+    {
+        inputVector = new Vector3(Input.GetAxis("Horizontal"),rb.velocity.y,0.5f);
+        rb.velocity = inputVector*5;
     }
 }
