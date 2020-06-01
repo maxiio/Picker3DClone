@@ -5,15 +5,18 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public int direction = 1;
-    // Start is called before the first frame update
+    public int rigtDirection = 1;
+    public Transform rightDoor;
+    public Transform leftDoor;
     void Start()
     {
-        OpenTheDoor();
+        //OpenTheDoor();
     }
 
-    private void OpenTheDoor()
+    public void OpenTheDoor()
     {
-        transform.DORotate(new Vector3(0, 0, -90 * direction), 0.4f);
+        
+        rightDoor.DORotate(new Vector3(0, 0, -90 * rigtDirection), 0.4f);
+        leftDoor.DORotate(new Vector3(0, 0, -90 * -rigtDirection), 0.4f);
     }
 }
