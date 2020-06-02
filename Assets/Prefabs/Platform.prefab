@@ -312,7 +312,7 @@ RectTransform:
   m_GameObject: {fileID: 44347506909878986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.19}
-  m_LocalScale: {x: 0.15487981, y: 0.15487981, z: 0.15487981}
+  m_LocalScale: {x: 0.103393115, y: 0.103393115, z: 0.103393115}
   m_Children: []
   m_Father: {fileID: 7748181557767411530}
   m_RootOrder: 0
@@ -358,8 +358,8 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 0/10
 --- !u!64 &5821576599041086307
