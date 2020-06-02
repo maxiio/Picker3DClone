@@ -10,7 +10,7 @@ public class EditorManager : MonoBehaviour
     static void ResetLevels()
     {
         PlayerPrefs.SetInt(PlayerPrefKeyEnums.LEVEL_NO.ToString(), 0);
-
+        PlayerPrefs.SetInt(PlayerPrefKeyEnums.TOKEN_COUNT.ToString(), 0);
     }
 }
 #endif

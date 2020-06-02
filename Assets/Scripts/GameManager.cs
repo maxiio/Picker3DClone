@@ -27,26 +27,19 @@ public class GameManager : MonoBehaviour
     {
         MakeInstance();
     }
-
-    private void Start()
-    {
-
-    }
-
-    public void OnLevelCreated()
-    {
-
-    }
-
+    
     public void OnLevelCompleted()
     {
         levelCompleted = true;
         PlayerController.instance.OnStopPlayer(true);
         GUIManager.instance.ShowLevelCompletedMessage();
     }
-
-    public void ResetAllValues()
+    
+    public void OnLevelFailed()
     {
-        levelCompleted = false;
+        levelCompleted = true;
+        PlayerController.instance.OnStopPlayer(true);
+        GUIManager.instance.ShowLevelFailedMessage();
     }
+    
 }

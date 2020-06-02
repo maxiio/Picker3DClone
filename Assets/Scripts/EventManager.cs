@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     public Action onLevelCreated;
     public Action<GameObject> onPlayerInstantiated;
     public Action onLevelCompleted;
+    public Action onLevelFailed;
     public Action onInitNextLevel;
     public static EventManager Instance
     {
@@ -29,10 +30,10 @@ public class EventManager : MonoBehaviour
     }
     private void Start()
     {
-        onLevelCreated += GameManager.instance.OnLevelCreated;
         onPlayerInstantiated += CameraController.instance.OnPlayerInstantiate;
         onLevelCompleted += GameManager.instance.OnLevelCompleted;
         onLevelCompleted += LevelManager.instance.OnLevelCompleted;
+        onLevelFailed += GameManager.instance.OnLevelFailed;
         onInitNextLevel += LevelManager.instance.OnInitNextLevel;
     }
 }

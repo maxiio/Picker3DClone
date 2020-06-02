@@ -4,5 +4,6 @@ using UnityEngine;
 
 public enum PlayerPrefKeyEnums 
 {
-    LEVEL_NO
+    LEVEL_NO,
+    TOKEN_COUNT
 }

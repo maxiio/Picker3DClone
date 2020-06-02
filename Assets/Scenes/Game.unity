@@ -1335,6 +1335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec5b0cef1b9cfb479351a72823bcf43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fillColor: {r: 0.48235297, g: 1, b: 0.31764707, a: 1}
+  barFillAreas:
+  - {fileID: 1170003886}
+  - {fileID: 1615360110}
 --- !u!1 &1533811084
 GameObject:
   m_ObjectHideFlags: 0

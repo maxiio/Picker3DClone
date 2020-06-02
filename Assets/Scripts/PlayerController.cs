@@ -39,12 +39,6 @@ public class PlayerController : MonoBehaviour
         MakeInstance();
         _speedZ = SpeedZ;
     }
-
-    private void Start()
-    {
-        
-    }
-
     public void SetPlayer(Color color)
     {
         Color32 defaultColor = new Color32(0,0,0,0);
