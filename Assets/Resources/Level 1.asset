@@ -22,9 +22,11 @@ MonoBehaviour:
     platformColor: {r: 0, g: 0, b: 0, a: 0}
     poolColor: {r: 0, g: 0, b: 0, a: 0}
   - isItFinalGate: 0
-    collectionGoal: 0
-    boosterPrefab: {fileID: 0}
-    objectsToCollectPrefab: {fileID: 0}
+    collectionGoal: 15
+    boosterPrefab: {fileID: 8773177641018637461, guid: d011ff4d5f0fe634fac0391f50d13089,
+      type: 3}
+    objectsToCollectPrefab: {fileID: 8032359823352008599, guid: b8ed68deb66c5524ab01328e85c2b08a,
+      type: 3}
     platformColor: {r: 0, g: 0, b: 0, a: 0}
     poolColor: {r: 0, g: 0, b: 0, a: 1}
   - isItFinalGate: 0

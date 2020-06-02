@@ -7,5 +7,6 @@ public enum TagEnums
     CollectObject,
     Door,
     CheckPoint,
-    InGameCanvas
+    InGameCanvas,
+    Booster
 }

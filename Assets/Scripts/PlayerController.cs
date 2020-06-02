@@ -112,12 +112,15 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.layer = (int)LayerEnums.Collected;
         }
-
         if (!_stopMoving && other.CompareTag(TagEnums.CheckPoint.ToString()))
         {
             other.gameObject.GetComponent<CheckPoint>().door.OpenTheDoor();
             other.enabled = false;
             OnStopPlayer(true);
+        }
+        if (other.CompareTag(TagEnums.Booster.ToString()))
+        {
+            SetHelpersActive(true);
         }
     }
 
