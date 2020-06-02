@@ -31,16 +31,17 @@ public class LevelCreator : MonoBehaviour
     private void CreatePlatforms(Level levelData)
     {
         var platforms = levelData.platforms;
-        platformPos = GameManager.instance.firstPlatformPosition;
+        if(platformPos == Vector3.zero)
+            platformPos = GameManager.instance.firstPlatformPosition;
         var platformPrefab = LevelResources.Instance.platformPrefab;
         var finalGatePrefab = LevelResources.Instance.finalGatePrefab;
         
         for (int i = 0; i < platforms.Count; i++)
         {
             if(platforms[i].isItFinalGate)        
-                _newPlatform = Instantiate(finalGatePrefab, platformPos, finalGatePrefab.transform.rotation);
+                _newPlatform = Instantiate(finalGatePrefab, new Vector3(platformPos.x, -0.8f, platformPos.z), finalGatePrefab.transform.rotation);
             else
-                _newPlatform = Instantiate(platformPrefab, platformPos, platformPrefab.transform.rotation);
+                _newPlatform = Instantiate(platformPrefab, new Vector3(platformPos.x, -0.8f, platformPos.z), platformPrefab.transform.rotation);
             
             var newPlatformComponent = _newPlatform.GetComponent<Platform>();
             newPlatformComponent.SetPlatform(platforms[i]);
@@ -60,5 +61,10 @@ public class LevelCreator : MonoBehaviour
         player.GetComponent<PlayerController>().SetPlayer(color);
         
         EventManager.instance.onPlayerInstantiated?.Invoke(player);
+    }
+
+    public void LoadNextLevelsPlatforms(Level levelData)
+    {
+        CreatePlatforms(levelData);
     }
 }

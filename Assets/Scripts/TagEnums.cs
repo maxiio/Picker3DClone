@@ -8,5 +8,6 @@ public enum TagEnums
     Door,
     CheckPoint,
     InGameCanvas,
-    Booster
+    Booster,
+    FinishLine
 }

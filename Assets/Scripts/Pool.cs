@@ -1,15 +1,27 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Pool : MonoBehaviour
 {
-   public Text collectedCount;
-   private int _collectionCount;
+   
+   [Header("Pool Cover")]
+   [SerializeField] private GameObject poolCover;
+   
+   [Header("Collected Count Text")]
+   [SerializeField] private Text collectedCountText;
+   
+   [Header("Door")]
+   public Door door;
+   
+   private int _collectionGoal;
    private int _collectedCount;
+   private bool _collectionCompleted;
    private Color32 _defaultColor = new Color32(0,0,0,0);
+
    private void OnTriggerEnter(Collider other)
    {
       if (other.CompareTag(TagEnums.CollectObject.ToString()))
@@ -22,7 +34,7 @@ public class Pool : MonoBehaviour
 
    public void InitCollectedCount(int collectionGoal)
    {
-      _collectionCount = collectionGoal;
+      _collectionGoal = collectionGoal;
       SetCollectedCount();
    }
 
@@ -34,7 +46,33 @@ public class Pool : MonoBehaviour
    
    public void SetCollectedCount()
    {
-      collectedCount.text = _collectedCount + "/" + _collectionCount;
+      collectedCountText.text = _collectedCount + "/" + _collectionGoal;
+      CheckCollectedCount();
+   }
+
+   private void CheckCollectedCount()
+   {
+      if (_collectionCompleted)
+         return;
+      
+      if (_collectedCount != 0 &&_collectedCount >= _collectionGoal)
+      {
+         _collectionCompleted = true;
+         StartCoroutine(CoverThePoolRoutine());
+      }
+   }
+
+   IEnumerator CoverThePoolRoutine()
+   {
+      yield return new WaitForSeconds(0.2f);
+      door.OpenTheDoor();
+      poolCover.transform.DOMoveY(transform.parent.transform.position.y, 0.5f)
+         .OnComplete(
+            () =>
+            {
+               PlayerController.instance.OnStopPlayer(false);
+            });
+
    }
    
 }

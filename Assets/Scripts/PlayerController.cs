@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        SetHelpersActive(true);
+        
     }
 
     public void SetPlayer(Color color)
@@ -114,13 +114,17 @@ public class PlayerController : MonoBehaviour
         }
         if (!_stopMoving && other.CompareTag(TagEnums.CheckPoint.ToString()))
         {
-            other.gameObject.GetComponent<CheckPoint>().door.OpenTheDoor();
             other.enabled = false;
             OnStopPlayer(true);
         }
         if (other.CompareTag(TagEnums.Booster.ToString()))
         {
             SetHelpersActive(true);
+            Destroy(other);
+        }
+        if (other.CompareTag(TagEnums.FinishLine.ToString()) && !GameManager.instance.levelCompleted)
+        {
+            EventManager.instance.onLevelCompleted?.Invoke();
         }
     }
 
@@ -129,10 +133,6 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag(TagEnums.CollectObject.ToString()))
         {
             other.gameObject.layer = (int)LayerEnums.Default;
-        }
-        if (!_stopMoving && other.CompareTag(TagEnums.CheckPoint.ToString()))
-        {
-            other.gameObject.GetComponent<CheckPoint>().door.OpenTheDoor();
         }
     }
 

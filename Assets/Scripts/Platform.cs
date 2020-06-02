@@ -16,9 +16,6 @@ public class Platform : MonoBehaviour
     [Header("Pool Object")]
     [SerializeField] private Pool pool;
 
-    [Header("Pool Cover")]
-    [SerializeField] private GameObject poolCover;
-    
     [Header("Next Platform Point")]
     [SerializeField] private Transform nextPlatformPoint;
     

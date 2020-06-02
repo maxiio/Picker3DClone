@@ -51,14 +51,14 @@ public class LevelManager : MonoBehaviour
         CheckLevelNo();
         level = _levels[levelNo - 1];
 //        GUIManager.instance.SetLevelText(levelNo);
-        EventManager.instance.onLevelDataReady?.Invoke(level);
-        
+        LevelCreator.instance.CreateLevel(level);
+
     }    
     
-    public Level GetCurrentLevelData()
+    public Level GetNextLevelData()
     {
         CheckLevelNo();
-        return _levels[levelNo - 1];
+        return _levels[levelNo];
     }
 
 
@@ -79,7 +79,7 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("LevelManager.cs OnLevelCompleted()");
         levelNo++;
-
+        LevelCreator.instance.LoadNextLevelsPlatforms(GetNextLevelData());
         CheckLevelNo();
 
         SaveGameData();

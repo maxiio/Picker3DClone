@@ -9,6 +9,7 @@ TagManager:
   - Door
   - CheckPoint
   - Booster
+  - FinishLine
   layers:
   - Default
   - TransparentFX

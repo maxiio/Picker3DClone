@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("First Platform Position")] public Vector3 firstPlatformPosition;
 
-
+    public bool levelCompleted;
 
     private void MakeInstance()
     {
@@ -36,5 +36,10 @@ public class GameManager : MonoBehaviour
     public void OnLevelCreated()
     {
 
+    }
+
+    public void OnLevelCompleted()
+    {
+        levelCompleted = true;
     }
 }
