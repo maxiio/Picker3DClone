@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform endpointTransform;
 
-    private float _speedX = 3.0f;
+    private float _speedX = 2.0f;
     private float _speedZ = 8.0f;
     private Rigidbody _rb;
     private float _direction;
