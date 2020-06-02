@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 3481701717024382557}
   - component: {fileID: 6219039}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -559,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c7bb3660cda37884997e6a20209fcd85, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c7bb3660cda37884997e6a20209fcd85, type: 3}
       propertyPath: m_Layer
@@ -648,7 +648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c7bb3660cda37884997e6a20209fcd85, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c7bb3660cda37884997e6a20209fcd85, type: 3}
       propertyPath: m_Layer

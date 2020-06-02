@@ -8,13 +8,14 @@ using DG.Tweening;
 public class GUIManager : MonoBehaviour
 {
     public static GUIManager instance;
-    public GameObject ReloadButton;
-    public Text levelNoText;
-    public Text HintText;
-    public GameObject levelCompletedPanel;
-    public GameObject levelFailedPanel;
-    public GameObject playerBlocker;
-    public GameObject tutorialText;
+    
+    [SerializeField] private GameObject ReloadButton;
+    [SerializeField] private Text currentlevelNoText;
+    [SerializeField] private Text nextlevelNoText;
+    [SerializeField] private GameObject levelCompletedPanel;
+    [SerializeField] private GameObject levelFailedPanel;
+    [SerializeField] private GameObject playerBlocker;
+
 
     private bool _isItTutorial = false;
     
@@ -34,7 +35,9 @@ public class GUIManager : MonoBehaviour
     
     public void SetLevelText(int levelNo)
     {
-        levelNoText.text = "LEVEL " + levelNo;
+        currentlevelNoText.text = ""+ levelNo;
+        var nextLevelNo = levelNo+ 1;
+        nextlevelNoText.text = ""+ nextLevelNo;
     }
     
     public void HideInGameCanvasElements()
@@ -77,12 +80,7 @@ public class GUIManager : MonoBehaviour
     {
         LevelManager.instance.LoadCurrentLevel();
     }
-
-    public void OnHintDataIsReady(string hintText)
-    {
-        HintText.text = "";
-        HintText.DOText(hintText, 1.0f);
-    }
+    
     
     
 }

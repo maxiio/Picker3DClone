@@ -11,6 +11,7 @@ TagManager:
   - Booster
   - FinishLine
   - LevelEndPoint
+  - InGameCanvas
   layers:
   - Default
   - TransparentFX

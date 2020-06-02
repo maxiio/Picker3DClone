@@ -55,10 +55,10 @@ public class LevelManager : MonoBehaviour
 
     }    
     
-    public Level GetNextLevelData()
+    public Level GetNextLevelData(int nextLevelNo)
     {
         CheckLevelNo();
-        return _levels[levelNo];
+        return _levels[nextLevelNo];
     }
 
 
@@ -73,13 +73,15 @@ public class LevelManager : MonoBehaviour
         DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    
 
+    public void OnInitNextLevel()
+    {
+        LevelCreator.instance.LoadNextLevelsPlatforms(GetNextLevelData(levelNo +1));
+    }
     public void OnLevelCompleted()
     {
         Debug.Log("LevelManager.cs OnLevelCompleted()");
         levelNo++;
-        LevelCreator.instance.LoadNextLevelsPlatforms(GetNextLevelData());
         CheckLevelNo();
 
         SaveGameData();

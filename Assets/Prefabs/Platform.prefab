@@ -1176,6 +1176,7 @@ MonoBehaviour:
   boosterPosition: {fileID: 4817900471909559873}
   objectsToCollectPosition: {fileID: 8609820863392111021}
   pool: {fileID: 5403495865392333957}
+  poolCover: {fileID: 4243795160980177730}
   nextPlatformPoint: {fileID: 1713377470210658621}
 --- !u!1001 &532594224949953838
 PrefabInstance:

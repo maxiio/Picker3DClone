@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform endpointTransform;
 
-    private float _speedX = 3.5f;
+    private float _speedX = 3.0f;
     private float _speedZ = 8.0f;
     private Rigidbody _rb;
     private float _direction;
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool _clickStarted;
     private bool _stopMoving;
     private Vector3 _lastPos;
+    private bool _finishLinePassed;
 
     private void MakeInstance()
     {
@@ -53,7 +54,6 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
-
         if (Input.GetMouseButtonDown(0) )
         {
             _lastPos = Input.mousePosition;
@@ -79,8 +79,6 @@ public class PlayerController : MonoBehaviour
                     _direction = 1f;
                 }
             }
-            
-            //Debug.Log( "delta X : " + _delta.x );
 
             _lastPos = Input.mousePosition;
         }
@@ -120,9 +118,15 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag(TagEnums.Booster.ToString()))
         {
             SetHelpersActive(true);
-            Destroy(other);
+            Destroy(other.gameObject);
         }
-        if (other.CompareTag(TagEnums.FinishLine.ToString()) && !GameManager.instance.levelCompleted)
+        if (other.CompareTag(TagEnums.FinishLine.ToString()) && !_finishLinePassed)
+        {
+            _finishLinePassed = true;
+            BoostPlayer();
+            EventManager.Instance.onInitNextLevel?.Invoke();
+        }
+        if (other.CompareTag(TagEnums.LevelEndPoint.ToString()) && !GameManager.instance.levelCompleted)
         {
             EventManager.Instance.onLevelCompleted?.Invoke();
         }
@@ -148,8 +152,12 @@ public class PlayerController : MonoBehaviour
         {
             _stopMoving = false;
             _speedZ = SpeedZ;
-            
         }
+    }
+
+    public void BoostPlayer()
+    {
+        _speedZ += 30f;
     }
 }
 

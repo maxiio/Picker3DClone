@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     public Action onLevelCreated;
     public Action<GameObject> onPlayerInstantiated;
     public Action onLevelCompleted;
+    public Action onInitNextLevel;
     public static EventManager Instance
     {
         //todo: check this implementation
@@ -32,5 +33,6 @@ public class EventManager : MonoBehaviour
         onPlayerInstantiated += CameraController.instance.OnPlayerInstantiate;
         onLevelCompleted += GameManager.instance.OnLevelCompleted;
         onLevelCompleted += LevelManager.instance.OnLevelCompleted;
+        onInitNextLevel += LevelManager.instance.OnInitNextLevel;
     }
 }

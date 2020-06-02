@@ -9,5 +9,6 @@ public enum TagEnums
     CheckPoint,
     InGameCanvas,
     Booster,
-    FinishLine
+    FinishLine,
+    LevelEndPoint
 }

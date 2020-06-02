@@ -13,9 +13,13 @@ public class Platform : MonoBehaviour
     
     [Header("Objects to Collect Position")]
     [SerializeField] private Transform objectsToCollectPosition;
+    
     [Header("Pool Object")]
     [SerializeField] private Pool pool;
-
+    
+    [Header("Pool Cover")]
+    [SerializeField] private GameObject poolCover;
+    
     [Header("Next Platform Point")]
     [SerializeField] private Transform nextPlatformPoint;
     
@@ -32,7 +36,11 @@ public class Platform : MonoBehaviour
     private void SetPlatformBaseColor(Color platformBaseColor)
     {
         if (platformBaseColor != _defaultColor)
+        {
             platformBase.GetComponent<MeshRenderer>().material.color = platformBaseColor;
+            poolCover.GetComponent<MeshRenderer>().material.color = platformBaseColor;
+        }
+            
     }
 
     private void SetPool(PlatformData platformData)

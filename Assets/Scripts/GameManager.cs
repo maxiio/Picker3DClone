@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         levelCompleted = true;
         PlayerController.instance.OnStopPlayer(true);
+        GUIManager.instance.ShowLevelCompletedMessage();
     }
 
     public void ResetAllValues()
