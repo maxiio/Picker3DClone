@@ -57,14 +57,14 @@ public class LevelManager : MonoBehaviour
     
     public Level GetNextLevelData(int nextLevelNo)
     {
-        CheckLevelNo();
+        nextLevelNo = nextLevelNo >= _levels.Count ? 1 : nextLevelNo;
         return _levels[nextLevelNo];
     }
 
 
     private void CheckLevelNo()
     {
-        if (levelNo <= 0 || levelNo >= _levels.Count )
+        if (levelNo <= 0 || levelNo >= _levels.Count+1 )
             levelNo = 1;
     }
     
