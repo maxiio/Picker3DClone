@@ -71,6 +71,7 @@ public class Pool : MonoBehaviour
             () =>
             {
                PlayerController.instance.OnStopPlayer(false);
+               ProgressBarController.instance.AddProgress();
             });
 
    }

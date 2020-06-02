@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
     {
         CheckLevelNo();
         level = _levels[levelNo - 1];
-//        GUIManager.instance.SetLevelText(levelNo);
+        GUIManager.instance.SetLevelText(levelNo);
         LevelCreator.instance.CreateLevel(level);
 
     }    
