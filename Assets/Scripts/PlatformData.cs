@@ -8,6 +8,8 @@ public class PlatformData
 {
     [Header("Is it Final Gate ?")]
     public bool isItFinalGate;
+    [Header("Collection Goal")]
+    public int collectionGoal;
     [Header("Booster")]
     public GameObject boosterPrefab;
     [Header("Objects To Collect")]

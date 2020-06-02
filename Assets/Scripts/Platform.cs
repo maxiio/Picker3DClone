@@ -11,47 +11,62 @@ public class Platform : MonoBehaviour
     [Header("Booster Position")]
     [SerializeField] private Transform boosterPosition;
     
+    [Header("Objects to Collect Position")]
+    [SerializeField] private Transform objectsToCollectPosition;
     [Header("Pool Object")]
-    [SerializeField] private GameObject pool;
+    [SerializeField] private Pool pool;
 
+    [Header("Pool Cover")]
+    [SerializeField] private GameObject poolCover;
+    
     [Header("Next Platform Point")]
     [SerializeField] private Transform nextPlatformPoint;
     
     private GameObject _booster;
-    private Color32 defaultColor = new Color32(0,0,0,0);
+    private Color32 _defaultColor = new Color32(0,0,0,0);
 
     public void SetPlatform(PlatformData platformData)
     {
-        SetPlatformBaseColor(platformData.platformColor);
-        SetPoolColor(platformData.poolColor);
+        SetPlatformBaseColor(platformData.platformColor); 
+        SetPool(platformData);
         CreateBooster(platformData.boosterPrefab);
+        CreateObjectsToCollect(platformData.objectsToCollectPrefab);
     }
     private void SetPlatformBaseColor(Color platformBaseColor)
     {
-        if (platformBaseColor != defaultColor)
+        if (platformBaseColor != _defaultColor)
             platformBase.GetComponent<MeshRenderer>().material.color = platformBaseColor;
     }
-    
-    private void SetPoolColor(Color poolColor)
-    {
-        if (pool == null)
-            return;
 
-        if (poolColor != defaultColor)
-            pool.GetComponent<MeshRenderer>().material.color = poolColor;
+    private void SetPool(PlatformData platformData)
+    {
+        if (!pool)
+            return;
+        pool.InitCollectedCount(platformData.collectionGoal);
+        pool.InitPoolColor(platformData.poolColor);
     }
 
     private void CreateBooster(GameObject boosterPrefab)
     {
-        if (boosterPosition == null)
+        if (!boosterPosition)
          return;
         
-        if (boosterPrefab != null)
+        if (boosterPrefab)
             _booster = Instantiate(boosterPrefab, boosterPosition.position, boosterPrefab.transform.rotation);
+    }
+
+    private void CreateObjectsToCollect(GameObject objectsToCollectPrefab)
+    {
+        if (!objectsToCollectPosition)
+            return;
+        
+        if (objectsToCollectPrefab)
+            _booster = Instantiate(objectsToCollectPrefab, objectsToCollectPosition.position, objectsToCollectPrefab.transform.rotation);
     }
 
     public Vector3 GetNextTransformPoint()
     {
         return nextPlatformPoint.position;
     }
+    
 }
