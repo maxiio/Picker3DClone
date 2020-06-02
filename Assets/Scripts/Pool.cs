@@ -66,7 +66,7 @@ public class Pool : MonoBehaviour
    {
       yield return new WaitForSeconds(0.2f);
       door.OpenTheDoor();
-      poolCover.transform.DOMoveY(transform.parent.transform.position.y, 0.5f)
+      poolCover.transform.DOMoveY(transform.parent.transform.position.y, 0.5f).SetDelay(0.5f)
          .OnComplete(
             () =>
             {

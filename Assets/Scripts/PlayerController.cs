@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.CompareTag(TagEnums.FinishLine.ToString()) && !GameManager.instance.levelCompleted)
         {
-            EventManager.instance.onLevelCompleted?.Invoke();
+            EventManager.Instance.onLevelCompleted?.Invoke();
         }
     }
 

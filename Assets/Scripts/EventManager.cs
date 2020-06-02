@@ -5,23 +5,29 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public static EventManager instance;
+    public static EventManager _instance;
 
 
     public Action onLevelCreated;
     public Action<GameObject> onPlayerInstantiated;
     public Action onLevelCompleted;
-    private void MakeInstance()
+    public static EventManager Instance
     {
-        if (instance == null)
+        //todo: check this implementation
+        get
         {
-            instance = this;
+            if (_instance == null)
+            {
+                var manager = GameObject.Find("EventManager");
+                manager = manager == null ? new GameObject("EventManager") : manager;
+                _instance = manager.GetComponent<EventManager>();
+            }
+
+            return _instance;
         }
     }
-
-    private void Awake()
+    private void Start()
     {
-        MakeInstance();
         onLevelCreated += GameManager.instance.OnLevelCreated;
         onPlayerInstantiated += CameraController.instance.OnPlayerInstantiate;
         onLevelCompleted += GameManager.instance.OnLevelCompleted;

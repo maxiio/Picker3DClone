@@ -64,7 +64,7 @@ public class LevelManager : MonoBehaviour
 
     private void CheckLevelNo()
     {
-        if (levelNo <= 0 || levelNo > _levels.Count )
+        if (levelNo <= 0 || levelNo >= _levels.Count )
             levelNo = 1;
     }
     

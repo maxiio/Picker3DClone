@@ -48,7 +48,7 @@ public class LevelCreator : MonoBehaviour
             platformPos = newPlatformComponent.GetNextTransformPoint();
         }
         
-        EventManager.instance.onLevelCreated?.Invoke();
+        EventManager.Instance.onLevelCreated?.Invoke();
         
     }
 
@@ -60,7 +60,7 @@ public class LevelCreator : MonoBehaviour
         var player = Instantiate(playerPrefab, playerPos, playerPrefab.transform.rotation);
         player.GetComponent<PlayerController>().SetPlayer(color);
         
-        EventManager.instance.onPlayerInstantiated?.Invoke(player);
+        EventManager.Instance.onPlayerInstantiated?.Invoke(player);
     }
 
     public void LoadNextLevelsPlatforms(Level levelData)

@@ -41,5 +41,11 @@ public class GameManager : MonoBehaviour
     public void OnLevelCompleted()
     {
         levelCompleted = true;
+        PlayerController.instance.OnStopPlayer(true);
+    }
+
+    public void ResetAllValues()
+    {
+        levelCompleted = false;
     }
 }
