@@ -27,8 +27,8 @@ public class ProgressBarController : MonoBehaviour
 
     public void AddProgress()
     {
+        _progressIndex = _progressIndex >= barFillAreas.Count ? barFillAreas.Count-1 : _progressIndex;
         barFillAreas[_progressIndex].color = fillColor;
-        
         _progressIndex++;
     }
 }

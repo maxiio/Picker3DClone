@@ -66,11 +66,11 @@ public class Pool : MonoBehaviour
    {
       yield return new WaitForSeconds(0.2f);
       door.OpenTheDoor();
-      GUIManager.instance.CollectTokens(_collectedCount);
       poolCover.transform.DOMoveY(transform.parent.transform.position.y, 0.5f).SetDelay(0.5f)
          .OnComplete(
             () =>
             {
+               GUIManager.instance.CollectTokens(_collectedCount);
                PlayerController.instance.OnStopPlayer(false);
                ProgressBarController.instance.AddProgress();
             });
