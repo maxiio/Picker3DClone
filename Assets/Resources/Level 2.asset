@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0601b8b2909b8e4697f0162e6f92c63, type: 3}
-  m_Name: Level 1
+  m_Name: Level 2
   m_EditorClassIdentifier: 
   playerColor: {r: 0, g: 0, b: 0, a: 0}
   platforms:
   - isItFinalGate: 0
-    collectionGoal: 5
+    collectionGoal: 10
     boosterPrefab: {fileID: 0}
     objectsToCollectPrefab: {fileID: 1061372403063742466, guid: 16ae09b0b574a9c48ae74cb11e0a4308,
       type: 3}
-    platformColor: {r: 0, g: 0, b: 0, a: 0}
+    platformColor: {r: 0.5647059, g: 0, b: 0.87058824, a: 1}
     poolColor: {r: 0, g: 0, b: 0, a: 0}
   - isItFinalGate: 0
-    collectionGoal: 10
+    collectionGoal: 15
     boosterPrefab: {fileID: 8773177641018637461, guid: d011ff4d5f0fe634fac0391f50d13089,
       type: 3}
     objectsToCollectPrefab: {fileID: 8032359823352008599, guid: b8ed68deb66c5524ab01328e85c2b08a,
@@ -33,5 +33,5 @@ MonoBehaviour:
     collectionGoal: 0
     boosterPrefab: {fileID: 0}
     objectsToCollectPrefab: {fileID: 0}
-    platformColor: {r: 0.5621529, g: 0, b: 0.8679245, a: 1}
+    platformColor: {r: 0, g: 0.6639886, b: 1, a: 1}
     poolColor: {r: 0, g: 0, b: 0, a: 0}

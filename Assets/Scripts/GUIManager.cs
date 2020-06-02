@@ -17,7 +17,7 @@ public class GUIManager : MonoBehaviour
     [SerializeField] private GameObject levelFailedPanel;
     [SerializeField] private GameObject playerBlocker;
 
-    private int _totalTokenCount = 0;
+
     private int _currentTokenCount = 0;
     private float _duration = 0.5f;
     private void MakeInstance()
@@ -30,14 +30,17 @@ public class GUIManager : MonoBehaviour
     
     private void Awake()
     {
-        _totalTokenCount = PlayerPrefs.GetInt(PlayerPrefKeyEnums.TOKEN_COUNT.ToString(), 0);
-        SetTokenCountText();
         MakeInstance();
     }
-    
+
+    private void Start()
+    {   
+        SetTokenCountText();
+    }
+
     private void SetTokenCountText()
     {
-        currentTokenCounterText.text = ""+_totalTokenCount;
+        currentTokenCounterText.text = ""+ GameManager.instance.totalTokenCount;
     }
     public void SetLevelText(int levelNo)
     {
@@ -89,11 +92,11 @@ public class GUIManager : MonoBehaviour
 
     public void CollectTokens(int tokenCount)
     {
-        StartCoroutine(CountTo(_totalTokenCount + tokenCount));
+        StartCoroutine(CountTo(GameManager.instance.totalTokenCount + tokenCount));
     }
     
     IEnumerator CountTo (int target) {
-        int start = _totalTokenCount;
+        int start = GameManager.instance.totalTokenCount;
         for (float timer = 0; timer < _duration; timer += Time.deltaTime) {
             float progress = timer / _duration;
             _currentTokenCount = (int)Mathf.Lerp (start, target, progress);
@@ -101,8 +104,7 @@ public class GUIManager : MonoBehaviour
             yield return null;
         }
         
-        _totalTokenCount = target;
+        GameManager.instance.totalTokenCount = target;
         SetTokenCountText();
-        PlayerPrefs.SetInt(PlayerPrefKeyEnums.TOKEN_COUNT.ToString(), _totalTokenCount);
     }
 }

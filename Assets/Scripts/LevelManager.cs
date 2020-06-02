@@ -76,7 +76,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnInitNextLevel()
     {
-        LevelCreator.instance.LoadNextLevelsPlatforms(GetNextLevelData(levelNo +1));
+        LevelCreator.instance.LoadNextLevelsPlatforms(GetNextLevelData(levelNo));
     }
     public void OnLevelCompleted()
     {

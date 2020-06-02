@@ -38,7 +38,8 @@ public class Platform : MonoBehaviour
         if (platformBaseColor != _defaultColor)
         {
             platformBase.GetComponent<MeshRenderer>().material.color = platformBaseColor;
-            poolCover.GetComponent<MeshRenderer>().material.color = platformBaseColor;
+            if (poolCover)
+                poolCover.GetComponent<MeshRenderer>().material.color = platformBaseColor;
         }
             
     }

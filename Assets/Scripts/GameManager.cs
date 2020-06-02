@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("First Platform Position")] public Vector3 firstPlatformPosition;
 
     public bool levelCompleted;
-
+    public int totalTokenCount = 0;
     private void MakeInstance()
     {
         if (instance == null)
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         MakeInstance();
+        totalTokenCount = PlayerPrefs.GetInt(PlayerPrefKeyEnums.TOKEN_COUNT.ToString(), 0);
     }
     
     public void OnLevelCompleted()
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         levelCompleted = true;
         PlayerController.instance.OnStopPlayer(true);
         GUIManager.instance.ShowLevelCompletedMessage();
+        PlayerPrefs.SetInt(PlayerPrefKeyEnums.TOKEN_COUNT.ToString(), totalTokenCount);
     }
     
     public void OnLevelFailed()

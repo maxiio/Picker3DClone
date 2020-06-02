@@ -20,12 +20,18 @@ public class Pool : MonoBehaviour
    private int _collectionGoal;
    private int _collectedCount;
    private bool _collectionCompleted;
+   private bool _countDownStarted;
    private Color32 _defaultColor = new Color32(0,0,0,0);
 
    private void OnTriggerEnter(Collider other)
    {
       if (other.CompareTag(TagEnums.CollectObject.ToString()))
       {
+         if (!_countDownStarted)
+         {
+            _countDownStarted = true;
+            StartCoroutine(CountTo(0.5f));
+         }
          other.GetComponent<BoxCollider>().enabled = false;
          _collectedCount++;
          SetCollectedCount();
@@ -75,6 +81,19 @@ public class Pool : MonoBehaviour
                ProgressBarController.instance.AddProgress();
             });
 
+   }
+   
+   IEnumerator CountTo (float target) {
+      int start = 0;
+      for (float timer = 0; timer < target; timer += Time.deltaTime) {
+         
+         yield return null;
+      }
+
+      if (_collectedCount < _collectionGoal)
+      {
+         EventManager.Instance.onLevelFailed?.Invoke();
+      }
    }
    
 }
