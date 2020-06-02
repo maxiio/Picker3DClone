@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
 
 
     public Action onLevelCreated;
+    public Action<GameObject> onPlayerInstantiated;
     public Action<Level> onLevelDataReady;
     public Action<bool> onStopPlayer;
     private void MakeInstance()
@@ -28,6 +29,7 @@ public class EventManager : MonoBehaviour
     {
         onLevelDataReady += LevelCreator.instance.CreateLevel;
         onLevelCreated += GameManager.instance.OnLevelCreated;
+        onPlayerInstantiated += CameraController.instance.OnPlayerInstantiate;
         onStopPlayer += PlayerController.instance.OnStopPlayer;
     }
 }

@@ -58,5 +58,7 @@ public class LevelCreator : MonoBehaviour
         var playerPrefab = LevelResources.Instance.playerPrefab;
         var player = Instantiate(playerPrefab, playerPos, playerPrefab.transform.rotation);
         player.GetComponent<PlayerController>().SetPlayer(color);
+        
+        EventManager.instance.onPlayerInstantiated?.Invoke(player);
     }
 }
