@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
     
     public Level GetNextLevelData(int nextLevelNo)
     {
-        nextLevelNo = nextLevelNo >= _levels.Count ? 1 : nextLevelNo;
+        nextLevelNo = nextLevelNo >= _levels.Count ? 0 : nextLevelNo;
         return _levels[nextLevelNo];
     }
 

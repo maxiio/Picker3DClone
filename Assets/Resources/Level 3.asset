@@ -33,5 +33,5 @@ MonoBehaviour:
     collectionGoal: 0
     boosterPrefab: {fileID: 0}
     objectsToCollectPrefab: {fileID: 0}
-    platformColor: {r: 1, g: 0, b: 0.24696922, a: 1}
+    platformColor: {r: 0, g: 0, b: 0, a: 0}
     poolColor: {r: 0, g: 0, b: 0, a: 0}

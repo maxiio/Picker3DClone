@@ -8,14 +8,14 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
     private const float SpeedZ = 15.0f;
-    
+
     [SerializeField] private List<GameObject> helpers;
 
     [SerializeField] private MeshRenderer playerRenderer;
 
     [SerializeField] private Transform endpointTransform;
 
-    private float _speedX = 2.7f;
+    private float _speedX = 3.7f;
     private float _speedZ = 8.0f;
     private Rigidbody _rb;
     private float _direction;
@@ -45,8 +45,7 @@ public class PlayerController : MonoBehaviour
         if (color != defaultColor)
             playerRenderer.material.color = color;
     }
-    
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0) )
         {
@@ -60,7 +59,7 @@ public class PlayerController : MonoBehaviour
                 _delta = Input.mousePosition - _lastPos;
             }
 
-            if (Mathf.Abs(_delta.x) > 10f)
+            if (Mathf.Abs(_delta.x) != 0f)
             {
                 float h= Input.GetAxis("Mouse X");
 
@@ -72,6 +71,10 @@ public class PlayerController : MonoBehaviour
                 {
                     _direction = 1f;
                 }
+            }
+            else
+            {
+                _direction = 0;
             }
 
             _lastPos = Input.mousePosition;
